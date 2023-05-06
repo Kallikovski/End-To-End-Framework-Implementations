@@ -1,0 +1,16 @@
+# FROM mongo-express:0.54.0
+FROM node:19.2-bullseye-slim
+
+RUN mkdir -p /usr/src/backend
+
+WORKDIR /usr/src/backend
+
+COPY package.json yarn.lock ./
+
+RUN yarn install
+
+COPY . /usr/src/backend
+
+
+
+# EXPOSE 3000

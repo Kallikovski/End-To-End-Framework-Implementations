@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    command: yarn dev
+    depends_on:
+      - backend
+    environment:
+      API_URL: http://localhost:3000/
+    ports:
+      - 8080:5173
+
+  backend:
+    container_name: backend
+    image: pascal00fitzner/master-thesis-backend
+    command: yarn start
+    depends_on:
+      - mongodb
+    environment:
+      DATABASE_URI_LOCAL: mongodb://root:rootpassword@mongodb:27017/
+      JWT_SECRET: jwtappsecret
+    ports:
+      - 3000:3000
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017

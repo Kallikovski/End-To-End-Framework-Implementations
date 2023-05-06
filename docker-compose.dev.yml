@@ -1,0 +1,42 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    command: sleep infinity
+    depends_on:
+     - backend
+    volumes:
+      - ./frontend:/usr/src/frontend
+    environment:
+      API_URL: http://localhost:3000/
+    ports:
+      - 8080:5173
+      - 9229:9229
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    command: sleep infinity
+    depends_on:
+      - mongodb
+    volumes:
+      - ./backend:/usr/src/backend
+    environment:
+      DATABASE_URI_LOCAL: mongodb://root:rootpassword@mongodb:27017/
+      JWT_SECRET: jwtappsecret
+    ports:
+      - 3000:3000
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017

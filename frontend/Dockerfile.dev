@@ -1,0 +1,24 @@
+# Create image from Dockerhub
+FROM node:19.2-bullseye-slim
+
+RUN apt-get update && apt-get install -y chromium
+
+# Create a directory where the app will be placed.
+RUN mkdir -p /usr/src/frontend
+
+# Change directory to run command in new directory
+WORKDIR /usr/src/frontend
+
+# Copy dependency definitions
+COPY package.json yarn.lock ./
+
+# Install dependencies
+RUN yarn install
+
+# Copy code to run the app
+COPY . /usr/src/frontend
+
+# Expose port which the app runs on
+# EXPOSE 8080
+
+# Start dev server
