@@ -44,3 +44,4 @@ networks:
   application-network:
     driver: bridge
     name: custom_application_network
+

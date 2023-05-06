@@ -24,7 +24,7 @@
             <input id="email" type="email" class="validate" :placeholder="profile.email" v-model="form.email">
           </div>
         </div>
-        <ul class="collection" v-if="!editMode">
+         <ul class="collection" v-if="!editMode">
           <li class="collection-item">
             <div class="property">Surname:</div>
             <div id="surname" v-if="profile.surname" class="value">{{ profile.surname }}
@@ -54,13 +54,13 @@
         </ul>
       </div>
       <div class="card-action" v-if="!editMode">
-        <a class="waves-effect waves-light btn-small signout" @click="signout">Signout</a>
-        <a class="waves-effect waves-light btn-small" @click="editMode = !editMode">Edit</a>
-        <a class="waves-effect waves-light btn-small delete" @click="deleteProfile">Delete</a>
+        <a id="signout" class="waves-effect waves-light btn-small signout" @click="signout">Signout</a>
+        <a id="edit" class="waves-effect waves-light btn-small" @click="editMode = !editMode">Edit</a>
+        <a id="delete" class="waves-effect waves-light btn-small delete" @click="deleteProfile">Delete</a>
       </div>
       <div class="card-action" v-if="editMode">
-        <a class="waves-effect waves-light btn-small" @click="updateProfile">Update</a>
-        <a class="waves-effect waves-light btn-small delete" @click="editMode = !editMode">Cancel</a>
+        <a id="update" class="waves-effect waves-light btn-small" @click="updateProfile">Update</a>
+        <a id="cancel" class="waves-effect waves-light btn-small delete" @click="editMode = !editMode">Cancel</a>
       </div>
     </div>
   </div>

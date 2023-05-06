@@ -29,7 +29,9 @@ test:
     - docker-compose up -d
     - docker ps -a
     - echo "Test begin! ----------------------------------------------------!"
-    - docker exec frontend sh -c "yarn cy:run"
+    - date +%S
+    - docker exec frontend sh -c "yarn test"
+    - date +%S
     - echo "Test end! ----------------------------------------------------!"
 
 deploy:
@@ -37,3 +39,4 @@ deploy:
   script:
     - echo "This job deploys docker-compose!"
   environment: development
+

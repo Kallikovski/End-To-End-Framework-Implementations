@@ -1,9 +1,17 @@
 # Create image from Dockerhub
 FROM pascal00fitzner/master-thesis-frontend
 
-RUN apt-get update && apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb procps
+RUN apt-get update && apt-get install -y chromium=108.0.5359.94
 
-# RUN apt-get update && apt-get install -y chromium
+RUN apt-get update && apt-get install -y procps wget unzip xvfb libxi6 libgconf-2-4
+
+RUN wget http://chromedriver.storage.googleapis.com/108.0.5359.71/chromedriver_linux64.zip
+
+RUN unzip chromedriver_linux64.zip
+
+RUN mv chromedriver /usr/bin/chromedriver 
+RUN chown root:root /usr/bin/chromedriver 
+RUN chmod +x /usr/bin/chromedriver 
 
 # Create a directory where the app will be placed.
 RUN mkdir -p /usr/src/frontend
@@ -15,7 +23,6 @@ WORKDIR /usr/src/frontend
 COPY package.json yarn.lock ./
 
 # Install dependencies
-RUN yarn add cypress
 RUN yarn install
 
 # Copy code to run the app
