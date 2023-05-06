@@ -31,7 +31,7 @@
               <label for="password">Password</label>
             </div>
             <div class="input-field col s12">
-              <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit
               </button>
             </div>
             <div class="input-field col s12">

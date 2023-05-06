@@ -12,6 +12,7 @@ services:
       - ./frontend:/usr/src/frontend
     environment:
       API_URL: http://localhost:3000/
+      JEST_PUPPETEER_CONFIG: jest-puppeteer.config.cjs
     networks:
       - application-network
     ports:
@@ -49,6 +50,5 @@ services:
 
 networks:
   application-network:
-    driver: bridge
     external: true
     name: custom_application_network

@@ -1,17 +1,7 @@
 # Create image from Dockerhub
 FROM pascal00fitzner/master-thesis-frontend
 
-RUN apt-get update && apt-get install -y chromium=108.0.5359.94
-
-RUN apt-get update && apt-get install -y procps wget unzip xvfb libxi6 libgconf-2-4
-
-RUN wget http://chromedriver.storage.googleapis.com/108.0.5359.71/chromedriver_linux64.zip
-
-RUN unzip chromedriver_linux64.zip
-
-RUN mv chromedriver /usr/bin/chromedriver 
-RUN chown root:root /usr/bin/chromedriver 
-RUN chmod +x /usr/bin/chromedriver 
+RUN apt-get update && apt-get install -y chromium
 
 # Create a directory where the app will be placed.
 RUN mkdir -p /usr/src/frontend

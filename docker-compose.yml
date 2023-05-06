@@ -10,6 +10,7 @@ services:
       - backend
     environment:
       API_URL: http://localhost:3000/
+      JEST_PUPPETEER_CONFIG: jest-puppeteer.config.cjs
     networks:
       - application-network
     ports:
@@ -44,4 +45,3 @@ networks:
   application-network:
     driver: bridge
     name: custom_application_network
-

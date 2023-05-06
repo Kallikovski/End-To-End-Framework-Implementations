@@ -29,9 +29,7 @@ test:
     - docker-compose up -d
     - docker ps -a
     - echo "Test begin! ----------------------------------------------------!"
-    - date +%S
     - docker exec frontend sh -c "yarn test"
-    - date +%S
     - echo "Test end! ----------------------------------------------------!"
 
 deploy:

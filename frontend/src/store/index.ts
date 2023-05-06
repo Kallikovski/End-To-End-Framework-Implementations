@@ -65,7 +65,7 @@ export const useIndexStore = defineStore('Index', {
                 email,
                 password
             })
-            const response = await fetch(url + '/signup', {
+            const response = await fetch(url+'/signup', {
                 method: 'post',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
