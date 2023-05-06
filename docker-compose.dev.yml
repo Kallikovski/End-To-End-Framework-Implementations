@@ -12,6 +12,8 @@ services:
       - ./frontend:/usr/src/frontend
     environment:
       API_URL: http://localhost:3000/
+    networks:
+      - application-network
     ports:
       - 8080:5173
       - 9229:9229
@@ -29,6 +31,8 @@ services:
     environment:
       DATABASE_URI_LOCAL: mongodb://root:rootpassword@mongodb:27017/
       JWT_SECRET: jwtappsecret
+    networks:
+      - application-network
     ports:
       - 3000:3000
 
@@ -38,5 +42,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    networks:
+      - application-network
     ports:
       - 27017:27017
+
+networks:
+  application-network:
+    driver: bridge
+    external: true
+    name: custom_application_network

@@ -27,29 +27,29 @@
         <ul class="collection" v-if="!editMode">
           <li class="collection-item">
             <div class="property">Surname:</div>
-            <div v-if="profile.surname" class="value">{{ profile.surname }}
+            <div id="surname" v-if="profile.surname" class="value">{{ profile.surname }}
             </div>
-            <div v-else class="value"> --- </div>
+            <div id="surname" v-else class="value"> --- </div>
           </li>
           <li class="collection-item">
             <div class="property">Last Name:</div>
-            <div v-if="profile.lastname" class="value">{{ profile.lastname }}</div>
-            <div v-else class="value"> --- </div>
+            <div id="last_name" v-if="profile.lastname" class="value">{{ profile.lastname }}</div>
+            <div id="last_name" v-else class="value"> --- </div>
           </li>
           <li class="collection-item">
             <div class="property">Occupation:</div>
-            <div v-if="profile.occupation" class="value">{{ profile.occupation }}</div>
-            <div v-else class="value"> --- </div>
+            <div id="occupation" v-if="profile.occupation" class="value">{{ profile.occupation }}</div>
+            <div id="occupation" v-else class="value"> --- </div>
           </li>
           <li class="collection-item">
             <div class="property">Age:</div>
-            <div v-if="profile.age" class="value">{{ profile.age }}</div>
-            <div v-else class="value"> --- </div>
+            <div id="age" v-if="profile.age" class="value">{{ profile.age }}</div>
+            <div id="age" v-else class="value"> --- </div>
           </li>
           <li class="collection-item">
             <div class="property">E-Mail:</div>
-            <div v-if="profile.email" class="value">{{ profile.email }}</div>
-            <div v-else class="value"> --- </div>
+            <div id="email" v-if="profile.email" class="value">{{ profile.email }}</div>
+            <div id="email" v-else class="value"> --- </div>
           </li>
         </ul>
       </div>

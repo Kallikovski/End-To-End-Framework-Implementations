@@ -19,23 +19,21 @@ build:
 
 test:
   stage: test
-  script:
-  - echo "This job tests!"
-
-deploy:
-  stage: deploy
   variables:
     DOCKER_HOST: tcp://docker:2375/
     DOCKER_DRIVER: overlay2
     DOCKER_TLS_CERTDIR: ""
   script:
-    - echo "This job builds docker-compose!"
+    - echo "This job tests frontend application!"
     - apk add --no-cache docker-compose
     - docker-compose up -d
     - docker ps -a
-    - docker inspect frontend
-    - docker exec frontend sh -c "yarn build"
-    - docker exec frontend sh -c "ls"
-    - docker exec backend sh -c "yarn build"
-    - docker exec backend sh -c "ls"
-  environment: production
+    - echo "Test begin! ----------------------------------------------------!"
+    - docker exec frontend sh -c "yarn cy:run"
+    - echo "Test end! ----------------------------------------------------!"
+
+deploy:
+  stage: deploy
+  script:
+    - echo "This job deploys docker-compose!"
+  environment: development

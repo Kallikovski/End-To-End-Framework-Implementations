@@ -2,6 +2,8 @@ import { defineStore } from 'pinia';
 import { User, UpdateForm } from './types';
 import router from '../router/index'
 
+const url = "http://backend:3000"
+
 export const useIndexStore = defineStore('Index', {
     state: () => ({
         isAuthenticated: !!localStorage.getItem('Token'),
@@ -31,7 +33,7 @@ export const useIndexStore = defineStore('Index', {
                 email,
                 password
             })
-            const response = await fetch('http://localhost:3000/signin', {
+            const response = await fetch(url+'/signin', {
                 method: 'post',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -63,7 +65,7 @@ export const useIndexStore = defineStore('Index', {
                 email,
                 password
             })
-            const response = await fetch('http://localhost:3000/signup', {
+            const response = await fetch(url + '/signup', {
                 method: 'post',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -87,7 +89,7 @@ export const useIndexStore = defineStore('Index', {
         },
         async signOut()
         {
-            const response = await fetch('http://localhost:3000/signout', {
+            const response = await fetch(url+'/signout', {
                 method: 'post',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -109,7 +111,7 @@ export const useIndexStore = defineStore('Index', {
         },
         async getProfile()
         {
-            const response = await fetch('http://localhost:3000/profile', {
+            const response = await fetch(url+'/profile', {
                 method: 'get',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -133,7 +135,7 @@ export const useIndexStore = defineStore('Index', {
         async updateProfile(form: UpdateForm)
         {
             const data = JSON.stringify(form)
-            const response = await fetch('http://localhost:3000/profile/update', {
+            const response = await fetch(url+'/profile/update', {
                 method: 'put',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -157,7 +159,7 @@ export const useIndexStore = defineStore('Index', {
         },
         async deleteProfile()
         {
-            const response = await fetch('http://localhost:3000/profile/delete', {
+            const response = await fetch(url+'/profile/delete', {
                 method: 'delete',
                 headers: {
                     'Access-Control-Allow-Origin': '*',
